@@ -7,7 +7,6 @@ app.use(express.json())
 app.use(morgan(function (tokens, req, res) {
   let reqdata = ''
   if (tokens.method(req, res) === 'POST') {
-    console.log('body ', req.body)
     reqdata = JSON.stringify(req.body)
   }
   
@@ -104,11 +103,11 @@ app.post('/api/persons', (request, response) => {
   }
 
   const id = generateId()
-    const person = {
+  const person = {
       name: body.name,
       number: body.number,
       id: id,
-    }
+  }
   persons = persons.concat(person)
 
   response.json(person)
